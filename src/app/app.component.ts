@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { Component, OnInit, Input } from '@angular/core';
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'primeiro-projeto';
+export class AppComponent implements OnInit {
+  
+  canShow: boolean;
+  @Input() userName: string;
+  
+  constructor(private loginService: LoginService) { }
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  ngOnInit(): void {
+    if(localStorage.getItem('userLogado')){
+      this.userName = JSON.parse(localStorage.getItem('userLogado')).user.name;
+      this.canShow = true;
+    } else {
+      this.loginService.mostrarMenuEmitter.subscribe(
+        (canShow: boolean) => {
+          this.canShow = canShow;
+          if(canShow){
+            this.userName = JSON.parse(localStorage.getItem('userLogado')).user.name;
+          }
+        }
+      );
+    }
+  }
+
 }

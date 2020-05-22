@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from './vo/User';
+import { User } from '../vo/User';
 import { LoginService } from './login.service';
 
 @Component({
@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
+  public mostrarMenuEmitter = new EventEmitter<boolean>();
+
   constructor(
     private loginService: LoginService,   
     private router: Router) { }
@@ -23,16 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   autenticarUsuario() {
-    this.loginService.login(this.user).subscribe(
-      obj => {
-        console.log('logou com sucesso');
-        localStorage.setItem('token', obj.token);
-        this.router.navigateByUrl('/home');
-      },
-      error => {
-        console.log('erro ao logar');
-      }
-    );
+    this.loginService.login(this.user);
   }
 
 }

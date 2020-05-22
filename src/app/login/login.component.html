@@ -1,8 +1,16 @@
-<h2>Login</h2>
 
-<br>
-<br>
-
-<input type="text" [(ngModel)]="user.email" placeholder="E-mail"/> <br>
-<input type="password" [(ngModel)]="user.password" placeholder="Senha" style="margin-top: 1em;"/> <br><br>
-<input type="button" value="Enviar" (click)="autenticarUsuario()">
+<form (submit)="autenticarUsuario()" class="container">
+    <h2>Login</h2>
+    
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="user.email"
+        placeholder="Ex: teste@teste.com.br">
+    </div>
+    <div class="form-group">
+        <label for="senha">Password</label>
+        <input type="password" class="form-control" name="senha" [(ngModel)]="user.password"
+        placeholder="Ex: teste123">
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
