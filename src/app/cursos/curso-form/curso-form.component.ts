@@ -25,7 +25,7 @@ export class CursoFormComponent implements OnInit, OnDestroy {
 
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
-        let id = params['id'];
+        let id = parseInt(params['id']);
         this.curso = this.cursoService.getCursoById(id);
 
         if (this.curso === null){

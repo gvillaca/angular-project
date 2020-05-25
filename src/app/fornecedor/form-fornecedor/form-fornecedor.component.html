@@ -1,0 +1,26 @@
+<section>
+    <h2 *ngIf="isFornecedorNovo">Cadastrar novo fornecedor</h2>
+    <h2 *ngIf="!isFornecedorNovo">Altere os dados do fornecedor</h2>
+
+    <form>
+        <div class="form-group" *ngIf="!isFornecedorNovo">
+            <label for="id-curso">Id</label>
+            <input type="text" disabled class="form-control" name="id" [(ngModel)]="fornecedor.id">
+        </div>
+        <div class="form-group">
+            <label for="nome-curso">Nome</label>
+            <input type="text" class="form-control" name="nome" [(ngModel)]="fornecedor.nome">
+        </div>
+        <div class="form-group">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" maxlength="20" cnpj class="form-control" name="cnpj" [(ngModel)]="fornecedor.cnpj">
+        </div>
+        <div class="form-group">
+            <label for="saldo">Saldo</label>
+            <input type="text" class="form-control" name="saldo" [(ngModel)]="fornecedor.saldo">
+        </div>
+
+        <button *ngIf="isFornecedorNovo" type="submit" class="btn btn-primary" (click)="addFornecedor()" >Cadastrar novo fornecedor</button>
+        <button *ngIf="!isFornecedorNovo" type="submit" class="btn btn-primary" (click)="editFornecedor()" >Alterar fornecedor</button>
+    </form>
+</section>
