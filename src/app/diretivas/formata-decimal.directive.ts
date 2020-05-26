@@ -45,6 +45,11 @@ export class FormataDecimalDirective {
     this.onTouched = fn;
   }
 
+  @HostListener('focus', ['$event'])
+  onFocus($event: any) {
+    this.onKeyup($event);
+  }
+
   @HostListener('keyup', ['$event'])
   onKeyup($event: any) {
     if ($event.target.value == "" || $event.target.value == null) {

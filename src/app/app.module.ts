@@ -8,6 +8,7 @@ import { LoginModule } from './login/login.module';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

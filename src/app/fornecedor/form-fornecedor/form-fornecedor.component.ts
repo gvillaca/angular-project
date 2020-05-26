@@ -45,6 +45,8 @@ export class FormFornecedorComponent implements OnInit, OnDestroy {
   addFornecedor() {
     let idAtual = this.service.getFornecedores().length + 1;
     this.fornecedor.id = idAtual;
+    this.fornecedor.cnpj = this.fornecedor.cnpj.replace(/[./-]/g, '');
+    this.fornecedor.saldo = this.fornecedor.saldo.replace(/[.,]/g, '');
     this.service.addFornecedor(this.fornecedor);
     this.fornecedor = {};
   }

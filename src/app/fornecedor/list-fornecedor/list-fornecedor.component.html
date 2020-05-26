@@ -5,7 +5,9 @@
             <a class="list-group-item list-group-item-action" 
                 [routerLink]="[f.id]"
                 *ngFor="let f of fornecedores">
-                {{ f.nome }} - {{ f.cnpj }} - {{ f.saldo }}
+                Nome: {{ f.nome }}<br>
+                CNPJ: {{ f.cnpj | cnpj }}<br> 
+                Saldo: {{ f.saldo | currency:'BRL' }}<br>
             </a>
         </div>
     </div>

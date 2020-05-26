@@ -7,13 +7,15 @@ import { ListFornecedorComponent } from './list-fornecedor/list-fornecedor.compo
 import { FormFornecedorComponent} from "./form-fornecedor/form-fornecedor.component";
 import { FormataCnpjDirective } from '../diretivas/formata-cnpj.directive';
 import { FormataDecimalDirective } from '../diretivas/formata-decimal.directive';
+import { CnpjPipe } from '../pipes/cnpj.pipe';
 
 @NgModule({
   declarations: [
     ListFornecedorComponent,
     FormFornecedorComponent,
     FormataCnpjDirective,
-    FormataDecimalDirective
+    FormataDecimalDirective,
+    CnpjPipe
   ],
   imports: [
     CommonModule,
