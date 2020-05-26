@@ -17,7 +17,9 @@
         </div>
         <div class="form-group">
             <label for="saldo">Saldo</label>
-            <input type="text" class="form-control" name="saldo" [(ngModel)]="fornecedor.saldo">
+            <input type="text" decimalMask="999.999.999,99" 
+            maxlength="18"
+            class="form-control" name="saldo" [(ngModel)]="fornecedor.saldo">
         </div>
 
         <button *ngIf="isFornecedorNovo" type="submit" class="btn btn-primary" (click)="addFornecedor()" >Cadastrar novo fornecedor</button>

@@ -20,18 +20,16 @@ export class FornecedorService {
   }
 
   editFornecedor(fornecedor: any) {
-    this.fornecedores.forEach(item => {
-      if (item.id == fornecedor.id) {
-        item = fornecedor;
-      }
-    });
+    let indexAlterado = this.getIndexItemById(fornecedor.id);
+    this.fornecedores.splice(indexAlterado, 1, fornecedor);
   }
 
   getFornecedorById(id: number): any {
-    return Object.assign({}, this.fornecedores.find(
-      item =>
-        item.id == id
-    ));
+    return Object.assign({}, this.fornecedores[this.getIndexItemById(id)]);
+  }
+
+  private getIndexItemById(id: number): number {
+    return this.fornecedores.findIndex(i => i.id == id);
   }
 
   constructor() { }

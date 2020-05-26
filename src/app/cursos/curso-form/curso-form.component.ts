@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CursoService } from '../curso.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class CursoFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private cursoService: CursoService
+    private service: CursoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,9 +27,14 @@ export class CursoFormComponent implements OnInit, OnDestroy {
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         let id = parseInt(params['id']);
-        this.curso = this.cursoService.getCursoById(id);
+        if (id >= 0) {
+          this.curso = this.service.getCursoById(id);
 
-        if (this.curso === null){
+          if (this.curso === null) {
+            this.isCursoNovo = true;
+            this.curso = {};
+          }
+        } else {
           this.isCursoNovo = true;
           this.curso = {};
         }
@@ -37,14 +43,19 @@ export class CursoFormComponent implements OnInit, OnDestroy {
 
   }
 
-  addCurso(){
-    let idAtual = this.cursoService.getCursos().length + 1;
+  addCurso() {
+    let idAtual = this.service.getCursos().length + 1;
     this.curso.id = idAtual;
-    this.cursoService.addCurso(this.curso);
+    this.service.addCurso(this.curso);
     this.curso = {};
   }
 
-  ngOnDestroy(){
+  editCurso() {
+    this.service.editCurso(this.curso);
+    this.router.navigateByUrl('/cursos');
+  }
+
+  ngOnDestroy() {
     this.inscricao.unsubscribe();
   }
 

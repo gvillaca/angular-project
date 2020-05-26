@@ -19,8 +19,12 @@ export class FormataCnpjDirective {
       this.onPressEnter.emit();
 
     else if (this.arrayFunction.indexOf(event.key) < 0)
-      // alert(this._el.nativeElement);
-      // this._renderer.setValue(this._el.nativeElement, this.convertToCpfCnpj(this._el.nativeElement.value));
+      this._renderer.setProperty(this._el.nativeElement, 'value', this.convertToCpfCnpj(this._el.nativeElement.value));
+    // this._el.nativeElement.value = this.convertToCpfCnpj(this._el.nativeElement.value);
+  }
+
+  @HostListener('focus', ['$event'])
+  onFocus(event: FocusEvent)  {
     this._el.nativeElement.value = this.convertToCpfCnpj(this._el.nativeElement.value);
   }
 

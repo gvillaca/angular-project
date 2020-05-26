@@ -4,9 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CursoService {
-  addCurso(curso: any) {
-    this.cursos.push(curso);
-  }
 
   private cursos: any[] = [
     { 'id': 1, 'nome': 'AngularJS', 'professor': 'Fulano', 'qtdAlunos': 15 },
@@ -18,11 +15,21 @@ export class CursoService {
     return this.cursos;
   }
 
-  getCursoById(id: number) {
-    return Object.assign({}, this.cursos.find(
-      item =>
-        item.id == id
-    ));
+  addCurso(curso: any) {
+    this.cursos.push(curso);
+  }
+
+  editCurso(curso: any) {
+    let indexAlterado = this.getIndexItemById(curso.id);
+    this.cursos.splice(indexAlterado, 1, curso);
+  }
+
+  getCursoById(id: number): any {
+    return Object.assign({}, this.cursos[this.getIndexItemById(id)]);
+  }
+
+  private getIndexItemById(id: number): number {
+    return this.cursos.findIndex(i => i.id == id);
   }
 
   constructor() { }

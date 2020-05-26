@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FornecedorService } from '../fornecedor.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class FormFornecedorComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private service: FornecedorService
+    private service: FornecedorService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,9 +27,14 @@ export class FormFornecedorComponent implements OnInit, OnDestroy {
     this.inscricao = this.route.params.subscribe(
       (params: any) => {
         let id = parseInt(params['id']);
-        this.fornecedor = this.service.getFornecedorById(id);
+        if (id >= 0) {
+          this.fornecedor = this.service.getFornecedorById(id);
 
-        if (this.fornecedor === null) {
+          if (this.fornecedor === null) {
+            this.isFornecedorNovo = true;
+            this.fornecedor = {};
+          }
+        } else {
           this.isFornecedorNovo = true;
           this.fornecedor = {};
         }
@@ -45,7 +51,7 @@ export class FormFornecedorComponent implements OnInit, OnDestroy {
 
   editFornecedor() {
     this.service.editFornecedor(this.fornecedor);
-    this.fornecedor = {};
+    this.router.navigateByUrl('/fornecedor');
   }
 
   ngOnDestroy() {
