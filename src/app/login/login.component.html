@@ -1,16 +1,17 @@
+<div class="shadow p-3 mb-5 bg-white rounded mt-5">
+    <form (submit)="autenticarUsuario()" class="container">
+        <h2>Login</h2>
 
-<form (submit)="autenticarUsuario()" class="container">
-    <h2>Login</h2>
-    
-    <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" class="form-control" name="email" [(ngModel)]="user.email"
-        placeholder="Ex: teste@teste.com.br">
-    </div>
-    <div class="form-group">
-        <label for="senha">Password</label>
-        <input type="password" class="form-control" name="senha" [(ngModel)]="user.password"
-        placeholder="Ex: teste123">
-    </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="user.email"
+                placeholder="Ex: teste@teste.com.br">
+        </div>
+        <div class="form-group">
+            <label for="senha">Password</label>
+            <input type="password" class="form-control" name="senha" [(ngModel)]="user.password"
+                placeholder="Ex: teste123">
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+</div>
