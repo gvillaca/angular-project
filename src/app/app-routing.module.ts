@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth/auth.guard';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './common/auth/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
-  { path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule), canActivate: [AuthGuard] },
-  { path: 'fornecedor', loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule), canActivate: [AuthGuard] }
+  { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
+  { path: 'cursos', loadChildren: () => import('./pages/cursos/cursos.module').then(m => m.CursosModule), canActivate: [AuthGuard] },
+  { path: 'fornecedor', loadChildren: () => import('./pages/fornecedor/fornecedor.module').then(m => m.FornecedorModule), canActivate: [AuthGuard] }
 ];
 
 @NgModule({
