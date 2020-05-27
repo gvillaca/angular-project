@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../vo/User';
+import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 

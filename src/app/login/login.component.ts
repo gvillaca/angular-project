@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../vo/User';
+import { User } from '../models/user';
 import { LoginService } from './login.service';
 
 @Component({
