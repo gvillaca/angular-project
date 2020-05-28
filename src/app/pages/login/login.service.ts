@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
-import { User } from 'src/app/common/models/User';
+import { User } from "@models/User";
 
 const httpOptions = {
   headers: new HttpHeaders({

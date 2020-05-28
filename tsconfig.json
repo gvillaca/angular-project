@@ -2,6 +2,14 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@auth/*": ["src/app/common/auth/*"],
+      "@diretivas/*": ["src/app/common/diretivas/*"],
+      "@models/*": ["src/app/common/models/*"],
+      "@pipes/*": ["src/app/common/pipes/*"],
+      "@core/*": ["src/app/core/*"],
+      "@pages/*": ["src/app/pages/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
