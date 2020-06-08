@@ -1,6 +1,6 @@
 <section>
-    <h2 *ngIf="isCursoNovo">Cadastrar novos cursos na lista de interesse</h2>
-    <h2 *ngIf="!isCursoNovo">Altere os dados do curso</h2>
+    <h2 *ngIf="isCursoNovo">Novo curso</h2>
+    <h2 *ngIf="!isCursoNovo">Alterr dados</h2>
 
     <form>
         <div class="form-group" *ngIf="!isCursoNovo">
@@ -20,7 +20,7 @@
             <input type="text" class="form-control" name="qtd-alunos" [(ngModel)]="curso.qtdAlunos">
         </div>
 
-        <button *ngIf="isCursoNovo" type="submit" class="btn btn-primary" (click)="addCurso()" >Cadastrar novo curso</button>
-        <button *ngIf="!isCursoNovo" type="submit" class="btn btn-primary" (click)="editCurso()" >Alterar curso</button>
+        <button *ngIf="isCursoNovo" class="btn btn-primary" (click)="addCurso()" >Cadastrar novo curso</button>
+        <button *ngIf="!isCursoNovo" class="btn btn-primary" (click)="editCurso()" >Alterar curso</button>
     </form>
 </section>

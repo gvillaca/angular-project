@@ -32,27 +32,50 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.loginForm.value);
     } else {
       this.submit = true;
-      Object.entries(this.loginForm.controls).forEach(item => {
-        if(item[1].errors){
-          this.getMensagensValidacao(item[1].errors)
-        }
-      });
-      console.log('Form inválido');
     }
   }
 
-  private getMensagensValidacao(erro: ValidationErrors){
-      switch(erro){
-        case erro['required']: {
-          this.erros.push('Por favor preencher todos os campos obrigatórios!');
+  aplicaCssErro(campo: string) {
+    return {
+      'is-invalid': this.verificaCampoValido(campo) && this.submit
+    }
+  }
+
+  private verificaCampoValido(campo: string) {
+    return this.getFormFCampo(campo).invalid;
+  }
+
+  hasErrors(campo: string) {
+    return this.getFormFCampo(campo).errors && this.submit;
+  }
+
+  private getFormFCampo(campo: string) {
+    return this.loginForm.get(campo);
+  }
+
+  getErro(campo: string) {
+    return this.getMensagensValidacao(campo);
+  }
+
+  private getMensagensValidacao(campo: string) {
+    let erro = '';
+    Object.keys(this.getFormFCampo(campo).errors).forEach(e => {
+      switch (e) {
+        case 'required': {
+          erro =  'O campo ' + campo + ' é obrigatório!';
+          break;
         }
-        case erro['email']: {
-          this.erros.push('E-mail inválido!');
+        case 'email': {
+          erro =  'E-mail inválido!';
+          break;
         }
-        case erro['minlength']: {
-          this.erros.push('Senha inválida!');
+        case 'minlength': {
+          erro =  'Senha inválida!';
+          break;
         }
       }
+    });
+    return erro;
   }
 
 }

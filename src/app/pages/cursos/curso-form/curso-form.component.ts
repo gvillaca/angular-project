@@ -30,7 +30,7 @@ export class CursoFormComponent implements OnInit, OnDestroy {
         if (id >= 0) {
           this.curso = this.service.getCursoById(id);
 
-          if (this.curso === null) {
+          if (!this.curso) {
             this.isCursoNovo = true;
             this.curso = {};
           }
@@ -44,10 +44,11 @@ export class CursoFormComponent implements OnInit, OnDestroy {
   }
 
   addCurso() {
-    let idAtual = this.service.getCursos().length + 1;
-    this.curso.id = idAtual;
+    // let idAtual = this.service.getCursos().length + 1;
+    // this.curso.id = idAtual;
     this.service.addCurso(this.curso);
     this.curso = {};
+    this.router.navigateByUrl('/cursos');
   }
 
   editCurso() {

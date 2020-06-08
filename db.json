@@ -1,0 +1,75 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "email": "admin",
+      "senha": "1234",
+      "user": {
+        "nome": "Gustavo Villaça",
+        "nivelDeAcesso": 1
+      }
+    },
+    {
+      "id": 2,
+      "email": "teste",
+      "senha": "1234",
+      "user": {
+        "nome": "Lorem Ipsum",
+        "nivelDeAcesso": 0
+      }
+    },
+    {
+      "email": "admin@email.com",
+      "senha": 123456,
+      "user": {
+        "nome": "Admin Teste",
+        "nivelDeAcesso": 1
+      },
+      "id": 3
+    }
+  ],
+  "cursos": [
+    {
+      "nome": "Angular",
+      "professor": "Gustavo",
+      "qtdAlunos": "1",
+      "id": 1
+    },
+    {
+      "nome": "teste 2",
+      "professor": "teste",
+      "qtdAlunos": "123",
+      "id": 2
+    },
+    {
+      "nome": "teste 34",
+      "professor": "teste",
+      "qtdAlunos": "123",
+      "id": 3
+    },
+    {
+      "nome": "teste 3",
+      "professor": "test",
+      "qtdAlunos": "12",
+      "id": 4
+    },
+    {
+      "nome": "asdasd",
+      "professor": "asdas",
+      "qtdAlunos": "31",
+      "id": 5
+    },
+    {
+      "nome": "aSASD",
+      "professor": "ADASD",
+      "qtdAlunos": "12",
+      "id": 6
+    },
+    {
+      "nome": "novo curso",
+      "professor": "teste",
+      "qtdAlunos": "12",
+      "id": 7
+    }
+  ]
+}

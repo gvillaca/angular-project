@@ -2,11 +2,13 @@
     <div class="col s6">
         <div class="collection">
             <h2>Cursos cadastrados</h2>
-            <a class="list-group-item list-group-item-action" 
-                [routerLink]="[curso.id]"
-                *ngFor="let curso of cursos">
-                {{ curso.nome }}
-            </a>
+            <div *ngIf="cursos.length > 0">
+                <a class="list-group-item list-group-item-action" [routerLink]="[curso.id]"
+                    *ngFor="let curso of cursos">
+                    {{ curso.nome }}
+                    <button type="button" class="btn btn-sm btn-outline-secondary ml-auto">Excluir</button>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -15,6 +17,5 @@
     </div>
 </div>
 
-<button 
-routerLink="novo"
-type="button" style="margin-top: 5px;" class="btn btn-primary btn-lg btn-block">Novo curso</button>
+<button routerLink="novo" type="button" style="margin-top: 5px;" class="btn btn-primary btn-lg btn-block">Novo
+    curso</button>
